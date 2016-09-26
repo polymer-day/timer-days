@@ -159,7 +159,8 @@ Custom property | Description | Default
          */
         lang:{
           type: String,
-          value: "en"
+          value: "en",
+          observer: "_adaptLanguage"
         },
 
         /** Target date after the arrangements for the  */
@@ -201,7 +202,6 @@ Custom property | Description | Default
       /** Calculates the values for all the properties and starts the timer. */
       targetDateChanged: function(){
         this._adjustToTimezone();
-        this._adaptLanguage();
         this._updateTimer();
       },
 
