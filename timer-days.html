@@ -291,6 +291,23 @@ Custom property | Description | Default
           this._mins = 0;
           this._secs = 0;
         }
+        this._days = this._padTime(this._days);
+        this._hours = this._padTime(this._hours);
+        this._mins = this._padTime(this._mins);
+        this._secs = this._padTime(this._secs);
+      },
+
+      /**
+       * Padding seconds, minutes and hours with 0
+       * 
+       * @return {string} A padding string with 0. Length 2  
+       */
+      _padTime: function(s){
+        var ss = "" + s;
+        var pad = "00";
+        var sss = pad.substring(0, pad.length - ss.length) + ss;
+        if (sss=="60") { sss = "00"; }
+        return sss;
       },
 
       /**
