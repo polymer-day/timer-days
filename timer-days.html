@@ -51,6 +51,8 @@ Custom property | Description | Default
 `--timer-days-font-description-size` | The timer-days font size for the text before an after the timer| `15px`
 `--timer-days-font-number-size` | The timer-days font size for the numbers | `35px`
 `--timer-days-font-text-size` | The timer-days font size for the words explaining each number | `18px`
+`--timer-days-number` | Mixin for number | {}
+`--timer-days-text` | Mixin for text | {}
 
 @element timer-days
 @demo demo/index.html
@@ -60,50 +62,55 @@ Custom property | Description | Default
 <dom-module id="timer-days">
   <style>
     :host {
-      min-width: 400px;
       display: block;
-      text-align: center; 
+
+      min-width: 400px;
       padding-top: 5px;
       padding-bottom: 5px;
 
-      background-color: var(--timer-days-background-color, #FFD54F);
-      border: 1px solid var(--timer-days-border-color, #212121);
-      color: var(--timer-days-font-color, #212121);
-      @apply(--shadow-elevation-4dp);
-      
-      transition-property: background-color, border, color;
-      transition-duration: 300ms;
-      transition-timing-function: linear; 
-
-      /*For Safari*/
-      -webkit-transition-property: background-color, border, color;
+      -webkit-transition-timing-function: linear;
+      transition-timing-function: linear;
       -webkit-transition-duration: 300ms;
-      -webkit-transition-timing-function: linear; 
+      transition-duration: 300ms;
+      -webkit-transition-property: background-color, border, color;
+      transition-property: background-color, border, color;
+      text-align: center;
+
+      color: var(--timer-days-font-color, #212121);
+      border: 1px solid var(--timer-days-border-color, #212121);
+      background-color: var(--timer-days-background-color, #FFD54F);
     }
 
     :host(:hover) {
-      background-color: var(--timer-days-hover-background-color, #4E342E);
-      border: 1px solid var(--timer-days-hover-border-color, #CFD8DC);
       color: var(--timer-days-hover-font-color, #CFD8DC);
+      border: 1px solid var(--timer-days-hover-border-color, #CFD8DC);
+      background-color: var(--timer-days-hover-background-color, #4E342E);
     }
 
     .description {
       margin: 5px 0px 5px 0px;
+
       font-size: var(--timer-days-font-description-size, 15px)
     }
 
-    .number{
+    .number {
       font-size: var(--timer-days-font-number-size, 35px);
+
+      @apply(--timer-days-number);
     }
 
-    .text{
-      font-size: var(--timer-days-font-text-size, 18px); 
+    .text {
+      font-size: var(--timer-days-font-text-size, 18px);
+
+      @apply(--timer-days-text);
     }
 
     .inline {
       display: inline-block;
-      text-align: center;
+
       margin: 1px 10px 6px 10px;
+
+      text-align: center;
     }
   </style>
 
